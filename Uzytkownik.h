@@ -7,4 +7,12 @@ class Uzytkownik {
     string login;
     string haslo;
 
+public:
+    void ustawId(int);
+    void ustawLogin(string);
+    void ustawHaslo(string);
+
+    int pobierzId();
+    string pobierzLogin();
+    string pobierzHaslo();
 };
