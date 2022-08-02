@@ -16,7 +16,7 @@ class KsiazkaAdresowa {
 
     Uzytkownik podajDaneNowegoUzytkownika();
     int pobierzIdNowegoUzytkownika();
-    bool czyIstniejeLogin(string login);
+    bool czyIstniejeLogin(string);
     void dopiszUzytkownikaDoPliku(Uzytkownik);
     string zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik);
     string konwerjsaIntNaString(int);
