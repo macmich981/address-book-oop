@@ -1,6 +1,10 @@
 #include "UzytkownikMenedzer.h"
 #include "PlikZUzytkownikami.h"
 
+UzytkownikMenedzer::UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {
+
+}
+
 void UzytkownikMenedzer::rejestracjaUzytkownika() {
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
 
