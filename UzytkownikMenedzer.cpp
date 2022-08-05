@@ -15,6 +15,35 @@ void UzytkownikMenedzer::rejestracjaUzytkownika() {
     system("pause");
 }
 
+void UzytkownikMenedzer::logowanieUzytkownika() {
+    Uzytkownik uzytkownik;
+    string login = "", haslo = "";
+
+    cout << endl << "Podaj login: ";
+    getline(cin, login);
+
+    for (Uzytkownik u : uzytkownicy) {
+        if (u.pobierzLogin() == login) {
+            for (int iloscProb = 3; iloscProb > 0; iloscProb--) {
+                cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
+                getline(cin, haslo);
+
+                if (u.pobierzHaslo() == haslo) {
+                    cout << endl << "Zalogowales sie." << endl << endl;
+                    system("pause");
+                    idZalogowanegoUzytkownika = u.pobierzId();
+                    return;
+                }
+            }
+            cout << "Wprowadzono 3 razy bledne haslo." << endl;
+            system("pause");
+            return;
+        }
+    }
+    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+    system("pause");
+}
+
 Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika() {
     Uzytkownik uzytkownik;
 
