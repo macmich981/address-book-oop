@@ -21,6 +21,8 @@ public:
     UzytkownikMenedzer(string);
     void rejestracjaUzytkownika();
     void logowanieUzytkownika();
+    void zmianaHaslaZalogowanegoUzytkownika();
+    void wylogowanieUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void wczytajUzytkownikowZPliku();
 };

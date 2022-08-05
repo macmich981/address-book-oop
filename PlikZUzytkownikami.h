@@ -20,6 +20,7 @@ public:
     PlikZUzytkownikami(string);
     void dopiszUzytkownikaDoPliku(Uzytkownik);
     vector<Uzytkownik> wczytajUzytkownikowZPliku();
+    void zapiszWszystkichUzytkownikowDoPliku(const vector<Uzytkownik>&);
     Uzytkownik pobierzDaneUzytkownika(string);
 };
 

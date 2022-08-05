@@ -12,7 +12,52 @@ void UzytkownikMenedzer::rejestracjaUzytkownika() {
     plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
+    cin.get();
     system("pause");
+}
+
+void UzytkownikMenedzer::logowanieUzytkownika() {
+    Uzytkownik uzytkownik;
+    string login = "", haslo = "";
+
+    cout << endl << "Podaj login: ";
+    getline(cin, login);
+
+    for (Uzytkownik u : uzytkownicy) {
+        if (u.pobierzLogin() == login) {
+            for (int iloscProb = 3; iloscProb > 0; iloscProb--) {
+                cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
+                getline(cin, haslo);
+
+                if (u.pobierzHaslo() == haslo) {
+                    cout << endl << "Zalogowales sie." << endl << endl;
+                    system("pause");
+                    idZalogowanegoUzytkownika = u.pobierzId();
+                    return;
+                }
+            }
+            cout << "Wprowadzono 3 razy bledne haslo." << endl;
+            system("pause");
+            return;
+        }
+    }
+    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+    system("pause");
+}
+
+void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika() {
+    string noweHaslo = "";
+    cout << "Podaj nowe haslo: ";
+    getline(cin, noweHaslo);
+
+    for (Uzytkownik &uzytkownik : uzytkownicy) {
+        if (uzytkownik.pobierzId() == idZalogowanegoUzytkownika) {
+            uzytkownik.ustawHaslo(noweHaslo);
+            cout << "Haslo zostalo zmienione." << endl << endl;
+            system("pause");
+        }
+    }
+    plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
 
 Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika() {
@@ -62,4 +107,9 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow() {
 
 void UzytkownikMenedzer::wczytajUzytkownikowZPliku() {
     uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
+}
+
+void UzytkownikMenedzer::wylogowanieUzytkownika() {
+    idZalogowanegoUzytkownika = 0;
+    cout << "Wylogowano" << endl;
 }
