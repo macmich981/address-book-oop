@@ -13,6 +13,7 @@ public:
     KsiazkaAdresowa(string);
     void rejestracjaUzytkownika();
     void logowanieUzytkownika();
+    void zmianaHaslaZalogowanegoUzytkownika();
     void wypiszWszystkichUzytkownikow();
 };
 

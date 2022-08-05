@@ -12,6 +12,7 @@ void UzytkownikMenedzer::rejestracjaUzytkownika() {
     plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
+    cin.get();
     system("pause");
 }
 
@@ -42,6 +43,21 @@ void UzytkownikMenedzer::logowanieUzytkownika() {
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
+}
+
+void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika() {
+    string noweHaslo = "";
+    cout << "Podaj nowe haslo: ";
+    getline(cin, noweHaslo);
+
+    for (Uzytkownik &uzytkownik : uzytkownicy) {
+        if (uzytkownik.pobierzId() == idZalogowanegoUzytkownika) {
+            uzytkownik.ustawHaslo(noweHaslo);
+            cout << "Haslo zostalo zmienione." << endl << endl;
+            system("pause");
+        }
+    }
+    plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
 
 Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika() {
