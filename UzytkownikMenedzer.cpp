@@ -1,7 +1,7 @@
 #include "UzytkownikMenedzer.h"
 #include "PlikZUzytkownikami.h"
 
-UzytkownikMenedzer::UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {
+UzytkownikMenedzer::UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami), adresaciMenedzer("Adresaci.txt") {
 
 }
 
@@ -112,4 +112,12 @@ void UzytkownikMenedzer::wczytajUzytkownikowZPliku() {
 void UzytkownikMenedzer::wylogowanieUzytkownika() {
     idZalogowanegoUzytkownika = 0;
     cout << "Wylogowano" << endl;
+}
+
+int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika() {
+    return idZalogowanegoUzytkownika;
+}
+
+AdresaciMenedzer& UzytkownikMenedzer::pobierzAdresaciMenedzer() {
+    return adresaciMenedzer;
 }
