@@ -50,7 +50,6 @@ void AdresaciMenedzer::dodajAdresata(int idZalogowanegoUzytkownika) {
     Adresat adresat;
 
     system("cls");
-    cout << idOstatniegoAdresata << endl;
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
     adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika);
 
