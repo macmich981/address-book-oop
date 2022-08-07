@@ -11,6 +11,7 @@ using namespace std;
 
 class AdresaciMenedzer {
     int idOstatniegoAdresata;
+    int idZalogowanegoUzytkownika;
     vector<Adresat> adresaci;
     PlikZAdresatami plikZAdresatami;
 
@@ -19,7 +20,9 @@ class AdresaciMenedzer {
 
 public:
     AdresaciMenedzer(string);
-    void dodajAdresata(int);
+    void dodajAdresata();
+    void ustawIdZalogowanegoUzytkownika(int);
+    void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 };
 
 #endif

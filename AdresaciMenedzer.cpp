@@ -46,7 +46,7 @@ Adresat AdresaciMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
     return adresat;
 }
 
-void AdresaciMenedzer::dodajAdresata(int idZalogowanegoUzytkownika) {
+void AdresaciMenedzer::dodajAdresata() {
     Adresat adresat;
 
     system("cls");
@@ -55,4 +55,12 @@ void AdresaciMenedzer::dodajAdresata(int idZalogowanegoUzytkownika) {
 
     adresaci.push_back(adresat);
     plikZAdresatami.dopiszAdresataDoPliku(adresat);
+}
+
+void AdresaciMenedzer::ustawIdZalogowanegoUzytkownika(int id) {
+    idZalogowanegoUzytkownika = id;
+}
+
+void AdresaciMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku() {
+    idOstatniegoAdresata = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
 }
