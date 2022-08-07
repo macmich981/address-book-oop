@@ -23,6 +23,8 @@ public:
     void dodajAdresata();
     void ustawIdZalogowanegoUzytkownika(int);
     void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+    void wyswietlDaneAdresata(Adresat adresat);
+    void wyswietlWszystkichAdresatow();
 };
 
 #endif
