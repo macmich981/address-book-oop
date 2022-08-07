@@ -2,7 +2,7 @@
 #include "PlikZUzytkownikami.h"
 
 UzytkownikMenedzer::UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami), adresaciMenedzer("Adresaci.txt") {
-    adresaciMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+
 }
 
 void UzytkownikMenedzer::rejestracjaUzytkownika() {
