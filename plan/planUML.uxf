@@ -12,6 +12,7 @@
     <panel_attributes>KsiazkaAdresowa
 -
 - uzytkownikMenedzer : UzytkownikMenedzer
+- adresaciMenedzer : AdresaciMenedzer
 -
 + KsiazkaAdresowa ()
 + rejestracjaUzytkownika() : void
@@ -51,7 +52,6 @@
 - idZalogowanegoUzytkownika : Integer
 - uzytkownicy : vector &lt;Uzytkownik&gt;
 - plikZUzytkownikami : PlikZUzytkownikami
-- adresaciMenedzer : AdresaciMenedzer
 -
 + UzytkownikMenedzer ()
 + rejestracjaUzytkownika () : void
@@ -61,7 +61,6 @@
 + wypiszWszystkichUzytkownikow () : void
 + wczytajUzytkownikowZPliku () : void
 + pobierzIdZalogowanegoUzytkownika () : Integer
-+ pobierzAdresaciMenedzer () : &amp;AdresaciMenedzer
 - podajDaneNowegoUzytkownika () : Uzytkownik
 - pobierzIdNowegoUzytkownika () : Integer
 - czyIstniejeLogin() : Bool</panel_attributes>
@@ -115,7 +114,6 @@
     <panel_attributes>AdresaciMenedzer
 --
 - idOstatniegoAdresata : Integer
-- idZalogowanegoUzytkownika : Integer
 - adresaci : vector&lt;Adresat&gt;
 - plikZAdresatami : PlikZAdresatami
 --
@@ -123,10 +121,10 @@
 - zamienPierwszaLitereNaDuzaAPozostaleNaMale() : String
 + AdresaciMenedzer ()
 + dodajAdresata () : void
-+ ustawIdZalogowanegoUzytkownika(int) : void
 + wczytajAdresatowZalogowanegoUzytkownikaZPliku () : void
 + wyswietlDaneAdresata () : void
-+ wyswietlWszystkichAdresatow () : void</panel_attributes>
++ wyswietlWszystkichAdresatow () : void
++ wyczyscAdresatow () : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

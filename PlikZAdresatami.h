@@ -18,7 +18,7 @@ class PlikZAdresatami
     Adresat pobierzDaneAdresata(string);
 
 public:
-    PlikZAdresatami(string);
+    PlikZAdresatami(string NAZWAPLIKUZADRESATAMI) : nazwaPlikuZAdresatami(NAZWAPLIKUZADRESATAMI) {};
     void dopiszAdresataDoPliku(Adresat);
     int wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector<Adresat>&, int);
 };

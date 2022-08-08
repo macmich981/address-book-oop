@@ -1,17 +1,13 @@
 #include "KsiazkaAdresowa.h"
 
-KsiazkaAdresowa::KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami) {
-    uzytkownikMenedzer.wczytajUzytkownikowZPliku();
-}
-
 void KsiazkaAdresowa::rejestracjaUzytkownika() {
     uzytkownikMenedzer.rejestracjaUzytkownika();
 }
 
 void KsiazkaAdresowa::logowanieUzytkownika() {
     uzytkownikMenedzer.logowanieUzytkownika();
-    uzytkownikMenedzer.pobierzAdresaciMenedzer().ustawIdZalogowanegoUzytkownika(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
-    uzytkownikMenedzer.pobierzAdresaciMenedzer().wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+    idZalogowanegoUzytkownika = uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
+    adresaciMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
 }
 
 void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
@@ -19,7 +15,8 @@ void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
 }
 
 void KsiazkaAdresowa::wylogowanieUzytkownika() {
-    uzytkownikMenedzer.wylogowanieUzytkownika();
+    idZalogowanegoUzytkownika = uzytkownikMenedzer.wylogowanieUzytkownika();
+    adresaciMenedzer.wyczyscAdresatow();
 }
 
 void KsiazkaAdresowa::wypiszWszystkichUzytkownikow() {
@@ -27,9 +24,9 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow() {
 }
 
 void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {
-    uzytkownikMenedzer.pobierzAdresaciMenedzer().wyswietlWszystkichAdresatow();
+    adresaciMenedzer.wyswietlWszystkichAdresatow();
 }
 
 void KsiazkaAdresowa::dodajAdresata() {
-    uzytkownikMenedzer.pobierzAdresaciMenedzer().dodajAdresata();
+    adresaciMenedzer.dodajAdresata(idZalogowanegoUzytkownika);
 }

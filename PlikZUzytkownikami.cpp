@@ -1,7 +1,24 @@
 #include "PlikZUzytkownikami.h"
 
-PlikZUzytkownikami::PlikZUzytkownikami(string NAZWAPLIKUZUZYTKOWNIKAMI) : nazwaPlikuZUzytkownikami(NAZWAPLIKUZUZYTKOWNIKAMI) {
+bool PlikZUzytkownikami::czyPlikJestPusty() {
+    fstream plikTekstowy;
 
+    plikTekstowy.open(nazwaPlikuZUzytkownikami);
+    plikTekstowy.seekg(0, ios::end);
+    if (plikTekstowy.tellg() == 0)
+        return true;
+    else
+        return false;
+}
+
+string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik) {
+    string liniaZDanymiUzytkownika = "";
+
+    liniaZDanymiUzytkownika += MetodyPomocnicze::konwerjsaIntNaString(uzytkownik.pobierzId())+ '|';
+    liniaZDanymiUzytkownika += uzytkownik.pobierzLogin() + '|';
+    liniaZDanymiUzytkownika += uzytkownik.pobierzHaslo() + '|';
+
+    return liniaZDanymiUzytkownika;
 }
 
 void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) {
@@ -22,27 +39,6 @@ void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) {
     else
         cout << "Nie udalo sie otworzyc pliku " << nazwaPlikuZUzytkownikami << " i zapisac w nim danych." << endl;
     plikTekstowy.close();
-}
-
-bool PlikZUzytkownikami::czyPlikJestPusty() {
-    fstream plikTekstowy;
-
-    plikTekstowy.open(nazwaPlikuZUzytkownikami);
-    plikTekstowy.seekg(0, ios::end);
-    if (plikTekstowy.tellg() == 0)
-        return true;
-    else
-        return false;
-}
-
-string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik) {
-    string liniaZDanymiUzytkownika = "";
-
-    liniaZDanymiUzytkownika += MetodyPomocnicze::konwerjsaIntNaString(uzytkownik.pobierzId())+ '|';
-    liniaZDanymiUzytkownika += uzytkownik.pobierzLogin() + '|';
-    liniaZDanymiUzytkownika += uzytkownik.pobierzHaslo() + '|';
-
-    return liniaZDanymiUzytkownika;
 }
 
 vector<Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku() {
