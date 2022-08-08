@@ -17,11 +17,11 @@ class PlikZUzytkownikami {
     string zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik);
 
 public:
-    PlikZUzytkownikami(string);
+    PlikZUzytkownikami(string NAZWAPLIKUZUZYTKOWNIKAMI) : nazwaPlikuZUzytkownikami(NAZWAPLIKUZUZYTKOWNIKAMI) {};
     void dopiszUzytkownikaDoPliku(Uzytkownik);
     vector<Uzytkownik> wczytajUzytkownikowZPliku();
-    void zapiszWszystkichUzytkownikowDoPliku(const vector<Uzytkownik>&);
     Uzytkownik pobierzDaneUzytkownika(string);
+    void zapiszWszystkichUzytkownikowDoPliku(const vector<Uzytkownik>&);
 };
 
 #endif

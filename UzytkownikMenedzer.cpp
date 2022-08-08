@@ -1,8 +1,41 @@
 #include "UzytkownikMenedzer.h"
 #include "PlikZUzytkownikami.h"
 
-UzytkownikMenedzer::UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami), adresaciMenedzer("Adresaci.txt") {
+Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika() {
+    Uzytkownik uzytkownik;
 
+    uzytkownik.ustawId(pobierzIdNowegoUzytkownika());
+
+    string login;
+    do {
+        cout << "Podaj login: ";
+        cin >> login;
+        uzytkownik.ustawLogin(login);
+    } while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
+
+    string haslo;
+    cout << "Podaj haslo: ";
+    cin >> haslo;
+    uzytkownik.ustawHaslo(haslo);
+
+    return uzytkownik;
+}
+
+int UzytkownikMenedzer::pobierzIdNowegoUzytkownika() {
+    if (uzytkownicy.empty() == true)
+        return 1;
+    else
+        return uzytkownicy.back().pobierzId() + 1;
+}
+
+bool UzytkownikMenedzer::czyIstniejeLogin(string login) {
+    for (Uzytkownik uzytkownik : uzytkownicy) {
+        if (uzytkownik.pobierzLogin() == login) {
+            cout << endl << "Istnieje uzytkownik o takim loginie." << endl;
+            return true;
+        }
+    }
+    return false;
 }
 
 void UzytkownikMenedzer::rejestracjaUzytkownika() {
@@ -60,43 +93,6 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika() {
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
 
-Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika() {
-    Uzytkownik uzytkownik;
-
-    uzytkownik.ustawId(pobierzIdNowegoUzytkownika());
-
-    string login;
-    do {
-        cout << "Podaj login: ";
-        cin >> login;
-        uzytkownik.ustawLogin(login);
-    } while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
-
-    string haslo;
-    cout << "Podaj haslo: ";
-    cin >> haslo;
-    uzytkownik.ustawHaslo(haslo);
-
-    return uzytkownik;
-}
-
-int UzytkownikMenedzer::pobierzIdNowegoUzytkownika() {
-    if (uzytkownicy.empty() == true)
-        return 1;
-    else
-        return uzytkownicy.back().pobierzId() + 1;
-}
-
-bool UzytkownikMenedzer::czyIstniejeLogin(string login) {
-    for (Uzytkownik uzytkownik : uzytkownicy) {
-        if (uzytkownik.pobierzLogin() == login) {
-            cout << endl << "Istnieje uzytkownik o takim loginie." << endl;
-            return true;
-        }
-    }
-    return false;
-}
-
 void UzytkownikMenedzer::wypiszWszystkichUzytkownikow() {
     for (Uzytkownik uzytkownik : uzytkownicy) {
         cout << uzytkownik.pobierzId() << endl;
@@ -109,15 +105,11 @@ void UzytkownikMenedzer::wczytajUzytkownikowZPliku() {
     uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
 
-void UzytkownikMenedzer::wylogowanieUzytkownika() {
-    idZalogowanegoUzytkownika = 0;
+int UzytkownikMenedzer::wylogowanieUzytkownika() {
     cout << "Wylogowano" << endl;
+    return 0;
 }
 
 int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika() {
     return idZalogowanegoUzytkownika;
-}
-
-AdresaciMenedzer& UzytkownikMenedzer::pobierzAdresaciMenedzer() {
-    return adresaciMenedzer;
 }
