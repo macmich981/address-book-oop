@@ -46,7 +46,7 @@ void AdresaciMenedzer::dodajAdresata() {
     } else {
         cout << "Blad. Nie udalo sie dodac nowego adresata do pliku" << endl;
     }
-    system("pasue");
+    system("pause");
 }
 
 void AdresaciMenedzer::wyswietlDaneAdresata(Adresat adresat) {
