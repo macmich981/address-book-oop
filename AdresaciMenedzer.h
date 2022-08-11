@@ -3,27 +3,27 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #include "Adresat.h"
 #include "PlikZAdresatami.h"
+#include "MetodyPomocnicze.h"
 
 using namespace std;
 
 class AdresaciMenedzer {
-    int idOstatniegoAdresata;
+    const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
     vector<Adresat> adresaci;
     PlikZAdresatami plikZAdresatami;
 
-    Adresat podajDaneNowegoAdresata(int);
-    string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string);
+    Adresat podajDaneNowegoAdresata();
+    void wyswietlDaneAdresata(Adresat adresat);
 
 public:
-    AdresaciMenedzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami) {};
-    void dodajAdresata(int);
-    void wczytajAdresatowZalogowanegoUzytkownikaZPliku(int);
-    void wyswietlDaneAdresata(Adresat adresat);
+    AdresaciMenedzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
+        : plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika) {
+        adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+    };
+    void dodajAdresata();
     void wyswietlWszystkichAdresatow();
-    void wyczyscAdresatow();
 };
 
 #endif
