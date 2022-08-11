@@ -24,3 +24,18 @@ int MetodyPomocnicze::konwersjaStringNaInt(string liczba) {
 
     return liczbaInt;
 }
+
+string MetodyPomocnicze::wczytajLinie() {
+    string wejscie = "";
+
+    getline(cin, wejscie);
+    return wejscie;
+}
+
+string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst) {
+    if (!tekst.empty()) {
+        transform(tekst.begin(), tekst.end(), tekst.begin(), ::tolower);
+        tekst[0] = toupper(tekst[0]);
+    }
+    return tekst;
+}

@@ -9,12 +9,17 @@ using namespace std;
 
 class KsiazkaAdresowa {
     UzytkownikMenedzer uzytkownikMenedzer;
-    AdresaciMenedzer adresaciMenedzer;
-    int idZalogowanegoUzytkownika;
+    AdresaciMenedzer *adresaciMenedzer;
+    const string NAZWA_PLIKU_Z_ADRESATAMI;
 
 public:
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), adresaciMenedzer(nazwaPlikuZAdresatami) {
-        uzytkownikMenedzer.wczytajUzytkownikowZPliku();
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami)
+        : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami) {
+        adresaciMenedzer = NULL;
+    }
+    ~KsiazkaAdresowa() {
+        delete adresaciMenedzer;
+        adresaciMenedzer = NULL;
     }
     void rejestracjaUzytkownika();
     void logowanieUzytkownika();
@@ -22,7 +27,6 @@ public:
     void wylogowanieUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void wyswietlWszystkichAdresatow();
-
     void dodajAdresata();
 };
 

@@ -63,9 +63,9 @@ void UzytkownikMenedzer::logowanieUzytkownika() {
                 getline(cin, haslo);
 
                 if (u.pobierzHaslo() == haslo) {
+                    idZalogowanegoUzytkownika = u.pobierzId();
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
-                    idZalogowanegoUzytkownika = u.pobierzId();
                     return;
                 }
             }
@@ -106,8 +106,11 @@ void UzytkownikMenedzer::wczytajUzytkownikowZPliku() {
 }
 
 int UzytkownikMenedzer::wylogowanieUzytkownika() {
-    cout << "Wylogowano" << endl;
-    return 0;
+    idZalogowanegoUzytkownika = 0;
+}
+
+bool UzytkownikMenedzer::czyUzytkownikJestZalogowany() {
+    return idZalogowanegoUzytkownika > 0;
 }
 
 int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika() {
