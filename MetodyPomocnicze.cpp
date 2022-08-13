@@ -39,3 +39,11 @@ string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst
     }
     return tekst;
 }
+
+char MetodyPomocnicze::pobierzZnak() {
+    char znak;
+
+    znak = getch();
+    cout << znak << endl;
+    return znak;
+}

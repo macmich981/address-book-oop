@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <conio.h>
 
 using namespace std;
 
@@ -13,6 +14,7 @@ public:
     static int konwersjaStringNaInt(string);
     static string wczytajLinie();
     static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string);
+    static char pobierzZnak();
 };
 
 #endif
