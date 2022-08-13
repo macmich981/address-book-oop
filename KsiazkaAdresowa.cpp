@@ -41,3 +41,7 @@ void KsiazkaAdresowa::dodajAdresata() {
         system("pause");
     }
 }
+
+void KsiazkaAdresowa::usunAdresata() {
+    adresaciMenedzer->usunAdresata();
+}

@@ -72,3 +72,31 @@ void AdresaciMenedzer::wyswietlWszystkichAdresatow() {
     }
     system("pause");
 }
+
+void AdresaciMenedzer::usunAdresata() {
+    system("cls");
+    cout << ">>> USUWANIE WYBRANEJ OSOBY <<<" << endl << endl;
+    cout << "Podaj numer ID osoby, ktora chcesz usunac: ";
+    int idUsuwanegoAdresata = MetodyPomocnicze::wczytajLiczbe();
+
+    for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++) {
+        if (itr->pobierzId() == idUsuwanegoAdresata) {
+            cout << "Potwierdz naciskajac klawisz 't': ";
+            char znak;
+            znak = MetodyPomocnicze::pobierzZnak();
+            if (znak == 't') {
+                adresaci.erase(itr);
+                cout << "Szukana osoba zostala usunieta" << endl;
+                plikZAdresatami.usunWybranegoAdresataZPliku(idUsuwanegoAdresata);
+                system("pause");
+                return;
+            } else {
+                cout << "Anulowano usuwanie!" << endl;
+                system("pause");
+                return;
+            }
+        }
+    }
+    cout << "Nie znaleziono adresata o takim ID" << endl;
+    system("pause");
+}

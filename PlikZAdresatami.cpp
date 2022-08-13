@@ -1,9 +1,9 @@
 #include "PlikZAdresatami.h"
 
-bool PlikZAdresatami::czyPlikJestPusty() {
+bool PlikZAdresatami::czyPlikJestPusty(string nazwaPliku) {
     fstream plikTekstowy;
 
-    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI);
+    plikTekstowy.open(nazwaPliku);
     plikTekstowy.seekg(0, ios::end);
     if (plikTekstowy.tellg() == 0)
         return true;
@@ -85,7 +85,7 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
     if (plikTekstowy.good() == true) {
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
-        if (czyPlikJestPusty() == true) {
+        if (czyPlikJestPusty(NAZWA_PLIKU_Z_ADRESATAMI) == true) {
             plikTekstowy << liniaZDanymiAdresata;
         } else {
             plikTekstowy << endl << liniaZDanymiAdresata;
@@ -124,4 +124,30 @@ vector<Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(i
 
 int PlikZAdresatami::pobierzIdOstatniegoAdresata() {
     return idOstatniegoAdresata;
+}
+
+void PlikZAdresatami::usunWybranegoAdresataZPliku(int idUsuwanegoAdresata) {
+    ifstream inFile;
+    inFile.open(NAZWA_PLIKU_Z_ADRESATAMI);
+    ofstream outFile;
+    outFile.open("Adresaci_tymczasowy.txt", ios_base::app);
+    string liniaZDanymiAdresata = "";
+
+    if (inFile.is_open()) {
+        while (getline(inFile, liniaZDanymiAdresata)) {
+            if (pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(liniaZDanymiAdresata) != idUsuwanegoAdresata) {
+                if (czyPlikJestPusty("Adresaci_tymczasowy.txt")) {
+                    outFile << liniaZDanymiAdresata;
+                } else {
+                    outFile << endl << liniaZDanymiAdresata;
+                }
+            }
+        }
+    }
+    outFile.close();
+    inFile.close();
+    char fileName[NAZWA_PLIKU_Z_ADRESATAMI.size() + 1];
+    strcpy(fileName, NAZWA_PLIKU_Z_ADRESATAMI.c_str());
+    remove(fileName);
+    rename("Adresaci_tymczasowy.txt", fileName);
 }
