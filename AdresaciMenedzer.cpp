@@ -86,8 +86,8 @@ void AdresaciMenedzer::usunAdresata() {
             znak = MetodyPomocnicze::pobierzZnak();
             if (znak == 't') {
                 adresaci.erase(itr);
+                plikZAdresatami.zapiszWszystkichAdresatowDoPliku(adresaci);
                 cout << "Szukana osoba zostala usunieta" << endl;
-                plikZAdresatami.usunWybranegoAdresataZPliku(idUsuwanegoAdresata);
                 system("pause");
                 return;
             } else {

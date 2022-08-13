@@ -126,22 +126,16 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata() {
     return idOstatniegoAdresata;
 }
 
-void PlikZAdresatami::usunWybranegoAdresataZPliku(int idUsuwanegoAdresata) {
+void PlikZAdresatami::zapiszWszystkichAdresatowDoPliku(const vector<Adresat> &adresaci) {
     ifstream inFile;
     inFile.open(NAZWA_PLIKU_Z_ADRESATAMI);
     ofstream outFile;
     outFile.open("Adresaci_tymczasowy.txt", ios_base::app);
     string liniaZDanymiAdresata = "";
 
-    if (inFile.is_open()) {
-        while (getline(inFile, liniaZDanymiAdresata)) {
-            if (pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(liniaZDanymiAdresata) != idUsuwanegoAdresata) {
-                if (czyPlikJestPusty("Adresaci_tymczasowy.txt")) {
-                    outFile << liniaZDanymiAdresata;
-                } else {
-                    outFile << endl << liniaZDanymiAdresata;
-                }
-            }
+    if (inFile.is_open() && outFile.is_open()) {
+        for (Adresat adresat : adresaci) {
+            dopiszAdresataDoPliku(adresat);
         }
     }
     outFile.close();
