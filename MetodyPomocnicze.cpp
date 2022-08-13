@@ -47,3 +47,15 @@ char MetodyPomocnicze::pobierzZnak() {
     cout << znak << endl;
     return znak;
 }
+
+int MetodyPomocnicze::wczytajLiczbe() {
+    int liczba;
+
+    while (!(cin >> liczba)) {
+        cout << "Niepoprawne dane. Sprobuj jeszcze raz: ";
+        cin.clear();
+        cin.ignore(1000, '\n');
+    }
+    cin.get();
+    return liczba;
+}

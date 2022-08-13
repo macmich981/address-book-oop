@@ -4,8 +4,7 @@
 
 using namespace std;
 
-char wybierzOpcjeZMenuGlownego()
-{
+char wybierzOpcjeZMenuGlownego() {
     char wybor;
 
     system("cls");
@@ -21,8 +20,7 @@ char wybierzOpcjeZMenuGlownego()
     return wybor;
 }
 
-char wybierzOpcjeZMenuUzytkownika()
-{
+char wybierzOpcjeZMenuUzytkownika() {
     char wybor;
 
     system("cls");
@@ -44,8 +42,7 @@ char wybierzOpcjeZMenuUzytkownika()
     return wybor;
 }
 
-int main()
-{
+int main() {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
 
     while (true) {
@@ -74,6 +71,9 @@ int main()
                 break;
             case '4':
                 ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+                break;
+            case '5':
+                ksiazkaAdresowa.usunAdresata();
                 break;
             case '7':
                 ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
