@@ -26,6 +26,7 @@ public:
     void zmianaHaslaZalogowanegoUzytkownika();
     void wylogowanieUzytkownika();
     void wypiszWszystkichUzytkownikow();
+    bool czyUzytkownikJestZalogowany();
     void wyswietlWszystkichAdresatow();
     void dodajAdresata();
 };
