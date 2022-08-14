@@ -24,6 +24,7 @@ public:
         adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
     };
     void dodajAdresata();
+    void wyswietlAdresatowOTakimSamymImieniu();
     void usunAdresata();
     void wyswietlWszystkichAdresatow();
     void edytujWybranegoAdresata();
