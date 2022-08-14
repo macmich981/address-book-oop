@@ -94,6 +94,27 @@ void AdresaciMenedzer::wyswietlAdresatowOTakimSamymImieniu() {
     system("pause");
 }
 
+void AdresaciMenedzer::wyswietlAdresatowOTakimSamymNazwisku() {
+    string nazwisko = "";
+    bool znalezionoAdresata = false;
+
+    system("cls");
+    cout << ">>> WYSZUKIWANIE OSOBY PO NAZWISKU <<<" << endl << endl;
+    cout << "Podaj imie osoby jaka mamy wyszukac: ";
+    nazwisko = MetodyPomocnicze::wczytajLinie();
+
+    for (Adresat adresat : adresaci) {
+        if (adresat.pobierzNazwisko() == nazwisko) {
+            wyswietlDaneAdresata(adresat);
+            znalezionoAdresata = true;
+        }
+    }
+    if (!znalezionoAdresata) {
+        cout << "Nie znaleziono osob o takim imieniu!" << endl;
+    }
+    system("pause");
+}
+
 void AdresaciMenedzer::usunAdresata() {
     system("cls");
     cout << ">>> USUWANIE WYBRANEJ OSOBY <<<" << endl << endl;

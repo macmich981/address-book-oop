@@ -30,6 +30,7 @@ public:
     void wyswietlWszystkichAdresatow();
     void dodajAdresata();
     void wyswietlAdresatowOTakimSamymImieniu();
+    void wyswietlAdresatowOTakimSamymNazwisku();
     void usunAdresata();
     void edytujAdresata();
 };
