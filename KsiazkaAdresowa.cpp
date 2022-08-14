@@ -42,6 +42,10 @@ void KsiazkaAdresowa::dodajAdresata() {
     }
 }
 
+void KsiazkaAdresowa::wyswietlAdresatowOTakimSamymImieniu() {
+    adresaciMenedzer->wyswietlAdresatowOTakimSamymImieniu();
+}
+
 void KsiazkaAdresowa::usunAdresata() {
     adresaciMenedzer->usunAdresata();
 }

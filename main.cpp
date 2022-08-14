@@ -69,6 +69,9 @@ int main() {
             case '1':
                 ksiazkaAdresowa.dodajAdresata();
                 break;
+            case '2':
+                ksiazkaAdresowa.wyswietlAdresatowOTakimSamymImieniu();
+                break;
             case '4':
                 ksiazkaAdresowa.wyswietlWszystkichAdresatow();
                 break;

@@ -1,9 +1,9 @@
 #include "PlikZAdresatami.h"
 
-bool PlikZAdresatami::czyPlikJestPusty(string nazwaPliku) {
+bool PlikZAdresatami::czyPlikJestPusty() {
     fstream plikTekstowy;
 
-    plikTekstowy.open(nazwaPliku);
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI);
     plikTekstowy.seekg(0, ios::end);
     if (plikTekstowy.tellg() == 0)
         return true;
@@ -85,7 +85,7 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
     if (plikTekstowy.good() == true) {
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
-        if (czyPlikJestPusty(NAZWA_PLIKU_Z_ADRESATAMI) == true) {
+        if (czyPlikJestPusty() == true) {
             plikTekstowy << liniaZDanymiAdresata;
         } else {
             plikTekstowy << endl << liniaZDanymiAdresata;

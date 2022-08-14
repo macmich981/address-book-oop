@@ -73,6 +73,27 @@ void AdresaciMenedzer::wyswietlWszystkichAdresatow() {
     system("pause");
 }
 
+void AdresaciMenedzer::wyswietlAdresatowOTakimSamymImieniu() {
+    string imie = "";
+    bool znalezionoAdresata = false;
+
+    system("cls");
+    cout << ">>> WYSZUKIWANIE OSOBY PO IMIENIU <<<" << endl << endl;
+    cout << "Podaj imie osoby jaka mamy wyszukac: ";
+    imie = MetodyPomocnicze::wczytajLinie();
+
+    for (Adresat adresat : adresaci) {
+        if (adresat.pobierzImie() == imie) {
+            wyswietlDaneAdresata(adresat);
+            znalezionoAdresata = true;
+        }
+    }
+    if (!znalezionoAdresata) {
+        cout << "Nie znaleziono osob o takim imieniu!" << endl;
+    }
+    system("pause");
+}
+
 void AdresaciMenedzer::usunAdresata() {
     system("cls");
     cout << ">>> USUWANIE WYBRANEJ OSOBY <<<" << endl << endl;

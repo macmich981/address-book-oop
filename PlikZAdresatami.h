@@ -14,7 +14,7 @@ class PlikZAdresatami
     const string NAZWA_PLIKU_Z_ADRESATAMI;
     int idOstatniegoAdresata;
 
-    bool czyPlikJestPusty(string);
+    bool czyPlikJestPusty();
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat);
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string);
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string);
