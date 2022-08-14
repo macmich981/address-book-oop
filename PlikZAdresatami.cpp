@@ -127,21 +127,15 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata() {
 }
 
 void PlikZAdresatami::zapiszWszystkichAdresatowDoPliku(const vector<Adresat> &adresaci) {
-    ifstream inFile;
-    inFile.open(NAZWA_PLIKU_Z_ADRESATAMI);
-    ofstream outFile;
-    outFile.open("Adresaci_tymczasowy.txt", ios_base::app);
-    string liniaZDanymiAdresata = "";
+    ofstream plik;
+    plik.open(NAZWA_PLIKU_Z_ADRESATAMI);
 
-    if (inFile.is_open() && outFile.is_open()) {
+    if (plik.is_open()) {
         for (Adresat adresat : adresaci) {
-            dopiszAdresataDoPliku(adresat);
+            if (!dopiszAdresataDoPliku(adresat)) {
+                cout << "Ups, cos poszlo nie tak. Blad zapisu do pliku!" << endl;
+            }
         }
     }
-    outFile.close();
-    inFile.close();
-    char fileName[NAZWA_PLIKU_Z_ADRESATAMI.size() + 1];
-    strcpy(fileName, NAZWA_PLIKU_Z_ADRESATAMI.c_str());
-    remove(fileName);
-    rename("Adresaci_tymczasowy.txt", fileName);
+    plik.close();
 }

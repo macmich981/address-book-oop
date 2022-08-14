@@ -16,6 +16,7 @@ class AdresaciMenedzer {
 
     Adresat podajDaneNowegoAdresata();
     void wyswietlDaneAdresata(Adresat adresat);
+    char wybierzOpcjeZMenuEdycja();
 
 public:
     AdresaciMenedzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
@@ -25,7 +26,7 @@ public:
     void dodajAdresata();
     void usunAdresata();
     void wyswietlWszystkichAdresatow();
-
+    void edytujWybranegoAdresata();
 };
 
 #endif
