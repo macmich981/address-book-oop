@@ -45,3 +45,7 @@ void KsiazkaAdresowa::dodajAdresata() {
 void KsiazkaAdresowa::usunAdresata() {
     adresaciMenedzer->usunAdresata();
 }
+
+void KsiazkaAdresowa::edytujAdresata() {
+    adresaciMenedzer->edytujWybranegoAdresata();
+}

@@ -100,3 +100,85 @@ void AdresaciMenedzer::usunAdresata() {
     cout << "Nie znaleziono adresata o takim ID" << endl;
     system("pause");
 }
+
+char AdresaciMenedzer::wybierzOpcjeZMenuEdycja() {
+    char wybor;
+
+    cout << endl << "   >>> MENU  EDYCJA <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Ktore dane zaktualizowac: " << endl;
+    cout << "1 - Imie" << endl;
+    cout << "2 - Nazwisko" << endl;
+    cout << "3 - Numer telefonu" << endl;
+    cout << "4 - Email" << endl;
+    cout << "5 - Adres" << endl;
+    cout << "6 - Powrot " << endl;
+    cout << endl << "Twoj wybor: ";
+    wybor = MetodyPomocnicze::pobierzZnak();
+
+    return wybor;
+}
+
+void AdresaciMenedzer::edytujWybranegoAdresata() {
+    system("cls");
+    cout << ">>> EDYTUJ DANE WYBRANEJ OSOBY <<<" << endl << endl;
+    cout << "Podaj numer ID osoby, ktorej dane chcesz edytowac: ";
+    int idEdytowanegoAdresata = MetodyPomocnicze::wczytajLiczbe();
+    bool znalezionoAdresata = false;
+
+    for (Adresat &adresat : adresaci) {
+        if (adresat.pobierzId() == idEdytowanegoAdresata) {
+            znalezionoAdresata = true;
+            char wybor = wybierzOpcjeZMenuEdycja();
+
+            switch (wybor) {
+            case '1': {
+                cout << "Podaj nowe imie: ";
+                string imie = MetodyPomocnicze::wczytajLinie();
+                imie = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
+                adresat.ustawImie(imie);
+                break;
+            }
+            case '2': {
+                cout << "Podaj nowe nazwisko: ";
+                string nazwisko = MetodyPomocnicze::wczytajLinie();
+                nazwisko = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwisko);
+                adresat.ustawNazwisko(nazwisko);
+                break;
+            }
+            case '3': {
+                cout << "Podaj nowy numer telefonu: ";
+                string numerTelefonu = MetodyPomocnicze::wczytajLinie();
+                adresat.ustawNumerTelefonu(numerTelefonu);
+                break;
+            }
+            case '4': {
+                cout << "Podaj nowy email: ";
+                string email = MetodyPomocnicze::wczytajLinie();
+                adresat.ustawEmail(email);
+                break;
+            }
+            case '5': {
+                cout << "Podaj adres: ";
+                string adres = MetodyPomocnicze::wczytajLinie();
+                adresat.ustawAdres(adres);
+                break;
+            }
+            case '6':
+                return;
+            default:
+                cout << endl << "Nie ma takiej opcji w menu! Powrot do menu uzytkownika." << endl << endl;
+                system("pause");
+                return;
+            }
+        }
+    }
+    if (znalezionoAdresata) {
+        plikZAdresatami.zapiszWszystkichAdresatowDoPliku(adresaci);
+        cout << "Dane adresata zostaly zaktualizowane" << endl;
+        system("pause");
+        return;
+    }
+    cout << "Adresat o podanym ID nie istnieje." << endl;
+    system("pause");
+}
