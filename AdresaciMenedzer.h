@@ -25,6 +25,7 @@ public:
     };
     void dodajAdresata();
     void wyswietlAdresatowOTakimSamymImieniu();
+    void wyswietlAdresatowOTakimSamymNazwisku();
     void usunAdresata();
     void wyswietlWszystkichAdresatow();
     void edytujWybranegoAdresata();

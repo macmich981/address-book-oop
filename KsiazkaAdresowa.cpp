@@ -46,6 +46,10 @@ void KsiazkaAdresowa::wyswietlAdresatowOTakimSamymImieniu() {
     adresaciMenedzer->wyswietlAdresatowOTakimSamymImieniu();
 }
 
+void KsiazkaAdresowa::wyswietlAdresatowOTakimSamymNazwisku() {
+    adresaciMenedzer->wyswietlAdresatowOTakimSamymNazwisku();
+}
+
 void KsiazkaAdresowa::usunAdresata() {
     adresaciMenedzer->usunAdresata();
 }
