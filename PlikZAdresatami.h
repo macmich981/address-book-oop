@@ -27,7 +27,7 @@ public:
     bool dopiszAdresataDoPliku(Adresat);
     vector<Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int);
     int pobierzIdOstatniegoAdresata();
-    void zapiszWszystkichAdresatowDoPliku(const vector<Adresat>&);
+    void zapiszWszystkichAdresatowDoPliku(Adresat&, int);
 };
 
 #endif

@@ -5,10 +5,10 @@ bool PlikZAdresatami::czyPlikJestPusty() {
 
     plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI);
     plikTekstowy.seekg(0, ios::end);
-    if (plikTekstowy.tellg() == 0)
+    if (plikTekstowy.tellg() == 0) {
         return true;
-    else
-        return false;
+    }
+    return false;
 }
 
 string PlikZAdresatami::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat) {
@@ -80,7 +80,7 @@ Adresat PlikZAdresatami::pobierzDaneAdresata(string daneAdresataOddzielonePionow
 bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
     string liniaZDanymiAdresata = "";
     fstream plikTekstowy;
-    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::app);
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI, ios::app);
 
     if (plikTekstowy.good() == true) {
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
@@ -126,16 +126,55 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata() {
     return idOstatniegoAdresata;
 }
 
-void PlikZAdresatami::zapiszWszystkichAdresatowDoPliku(const vector<Adresat> &adresaci) {
-    ofstream plik;
-    plik.open(NAZWA_PLIKU_Z_ADRESATAMI);
+void PlikZAdresatami::zapiszWszystkichAdresatowDoPliku(Adresat &adresat, int tryb) {
+    ifstream inFile;
+    inFile.open(NAZWA_PLIKU_Z_ADRESATAMI);
+    ofstream outFile;
+    outFile.open("Adresaci_tymczasowy.txt");
+    string liniaZDanymiAdresata = "";
+    int numerLiniiWPliku = 1;
 
-    if (plik.is_open()) {
-        for (Adresat adresat : adresaci) {
-            if (!dopiszAdresataDoPliku(adresat)) {
-                cout << "Ups, cos poszlo nie tak. Blad zapisu do pliku!" << endl;
+    if (inFile.is_open()) {
+        while (getline(inFile, liniaZDanymiAdresata)) {
+            int idAdresataZPliku = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(liniaZDanymiAdresata);
+
+            switch (tryb) {
+                case 1: { //edycja adresata
+                    if (idAdresataZPliku == adresat.pobierzId()) {
+                        string liniaZDanymiEdytowanegoAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
+                        if (numerLiniiWPliku == 1) {
+                            outFile << liniaZDanymiEdytowanegoAdresata;
+                        } else {
+                            outFile << endl << liniaZDanymiEdytowanegoAdresata;
+                        }
+                    } else {
+                        if (numerLiniiWPliku == 1) {
+                            outFile << liniaZDanymiAdresata;
+                        } else {
+                            outFile << endl << liniaZDanymiAdresata;
+                        }
+                    }
+                    numerLiniiWPliku++;
+                    break;
+                }
+                case 2: { //usuwanie adresata
+                    if (idAdresataZPliku != adresat.pobierzId()) {
+                        if (numerLiniiWPliku > 1) {
+                            outFile << endl << liniaZDanymiAdresata;
+                        } else {
+                            outFile << liniaZDanymiAdresata;
+                        }
+                        numerLiniiWPliku++;
+                    }
+                    break;
+                }
             }
         }
     }
-    plik.close();
+    outFile.close();
+    inFile.close();
+    char fileName[NAZWA_PLIKU_Z_ADRESATAMI.size() + 1];
+    strcpy(fileName, NAZWA_PLIKU_Z_ADRESATAMI.c_str());
+    remove(fileName);
+    rename("Adresaci_tymczasowy.txt", fileName);
 }

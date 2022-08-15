@@ -127,8 +127,8 @@ void AdresaciMenedzer::usunAdresata() {
             char znak;
             znak = MetodyPomocnicze::pobierzZnak();
             if (znak == 't') {
+                plikZAdresatami.zapiszWszystkichAdresatowDoPliku(*itr, 2);
                 adresaci.erase(itr);
-                plikZAdresatami.zapiszWszystkichAdresatowDoPliku(adresaci);
                 cout << "Szukana osoba zostala usunieta" << endl;
                 system("pause");
                 return;
@@ -214,12 +214,12 @@ void AdresaciMenedzer::edytujWybranegoAdresata() {
                 return;
             }
         }
-    }
-    if (znalezionoAdresata) {
-        plikZAdresatami.zapiszWszystkichAdresatowDoPliku(adresaci);
-        cout << "Dane adresata zostaly zaktualizowane" << endl;
-        system("pause");
-        return;
+        if (znalezionoAdresata) {
+            plikZAdresatami.zapiszWszystkichAdresatowDoPliku(adresat, 1);
+            cout << "Dane adresata zostaly zaktualizowane" << endl;
+            system("pause");
+            return;
+        }
     }
     cout << "Adresat o podanym ID nie istnieje." << endl;
     system("pause");
