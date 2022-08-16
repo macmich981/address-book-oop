@@ -19,6 +19,8 @@ void KsiazkaAdresowa::wylogowanieUzytkownika() {
     uzytkownikMenedzer.wylogowanieUzytkownika();
     delete adresaciMenedzer;
     adresaciMenedzer = NULL;
+    cout << "Wylogowano" << endl;
+    system("pause");
 }
 
 void KsiazkaAdresowa::wypiszWszystkichUzytkownikow() {
