@@ -8,20 +8,18 @@
 #include <cstring>
 #include "Adresat.h"
 #include "MetodyPomocnicze.h"
+#include "PlikTekstowy.h"
 
-class PlikZAdresatami
-{
-    const string NAZWA_PLIKU_Z_ADRESATAMI;
+class PlikZAdresatami : public PlikTekstowy {
     int idOstatniegoAdresata;
 
-    bool czyPlikJestPusty();
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat);
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string);
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string);
     Adresat pobierzDaneAdresata(string);
 
 public:
-    PlikZAdresatami(string nazwaPlikuZAdresatami) : NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami) {
+    PlikZAdresatami(string nazwaPlikuZAdresatami) : PlikTekstowy(nazwaPlikuZAdresatami) {
         idOstatniegoAdresata = 0;
     };
     bool dopiszAdresataDoPliku(Adresat);

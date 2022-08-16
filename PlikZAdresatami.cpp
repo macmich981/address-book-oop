@@ -1,16 +1,5 @@
 #include "PlikZAdresatami.h"
 
-bool PlikZAdresatami::czyPlikJestPusty() {
-    fstream plikTekstowy;
-
-    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI);
-    plikTekstowy.seekg(0, ios::end);
-    if (plikTekstowy.tellg() == 0) {
-        return true;
-    }
-    return false;
-}
-
 string PlikZAdresatami::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat) {
     string liniaZDanymiAdresata = "";
 
@@ -80,12 +69,12 @@ Adresat PlikZAdresatami::pobierzDaneAdresata(string daneAdresataOddzielonePionow
 bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
     string liniaZDanymiAdresata = "";
     fstream plikTekstowy;
-    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI, ios::app);
+    plikTekstowy.open(pobierzNazwePliku(), ios::app);
 
-    if (plikTekstowy.good() == true) {
+    if (plikTekstowy.good()) {
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
-        if (czyPlikJestPusty() == true) {
+        if (czyPlikJestPusty()) {
             plikTekstowy << liniaZDanymiAdresata;
         } else {
             plikTekstowy << endl << liniaZDanymiAdresata;
@@ -103,7 +92,7 @@ vector<Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(i
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
-    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
+    plikTekstowy.open(pobierzNazwePliku(), ios::in);
 
     if (plikTekstowy.good() == true) {
         while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami)) {
@@ -128,7 +117,7 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata() {
 
 void PlikZAdresatami::zapiszWszystkichAdresatowDoPliku(Adresat &adresat, int tryb) {
     ifstream inFile;
-    inFile.open(NAZWA_PLIKU_Z_ADRESATAMI);
+    inFile.open(pobierzNazwePliku());
     ofstream outFile;
     outFile.open("Adresaci_tymczasowy.txt");
     string liniaZDanymiAdresata = "";
@@ -173,8 +162,8 @@ void PlikZAdresatami::zapiszWszystkichAdresatowDoPliku(Adresat &adresat, int try
     }
     outFile.close();
     inFile.close();
-    char fileName[NAZWA_PLIKU_Z_ADRESATAMI.size() + 1];
-    strcpy(fileName, NAZWA_PLIKU_Z_ADRESATAMI.c_str());
+    char fileName[pobierzNazwePliku().size() + 1];
+    strcpy(fileName, pobierzNazwePliku().c_str());
     remove(fileName);
     rename("Adresaci_tymczasowy.txt", fileName);
 }
