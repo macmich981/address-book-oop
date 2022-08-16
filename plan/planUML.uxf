@@ -4,31 +4,38 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
-      <y>20</y>
+      <x>60</x>
+      <y>0</y>
       <w>360</w>
-      <h>270</h>
+      <h>310</h>
     </coordinates>
     <panel_attributes>KsiazkaAdresowa
 -
 - uzytkownikMenedzer : UzytkownikMenedzer
-- adresaciMenedzer : AdresaciMenedzer
+- adresaciMenedzer : *AdresaciMenedzer
+- NAZWA_PLIKU_Z_ADRESATAMI : String
 -
 + KsiazkaAdresowa ()
++ ~KsiazkaAdresowa ()
 + rejestracjaUzytkownika() : void
 + logowanieUzytkownika() : void
 + zmianaHaslaZalogowanegoUzytkownika() : void
 + wylogowanieUzytkownika () : void
 + wypiszWszystkichUzytkownikow () : void
++ czyUzytkownikJestZalogowany() : Bool
 + wyswietlWszystkichAdresatow () : void
-+ dodajAdresata () : void</panel_attributes>
++ dodajAdresata () : void
++ wyswietlAdresatwoOTakimSamymImieniu () : void
++ wyswietlAdresatowOTakimSamymNazwisku () : void
++ usunAdresata () : void
++ edytujAdresata () : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1130</x>
-      <y>20</y>
+      <x>460</x>
+      <y>0</y>
       <w>310</w>
       <h>280</h>
     </coordinates>
@@ -42,10 +49,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>30</y>
+      <x>790</x>
+      <y>0</y>
       <w>340</w>
-      <h>390</h>
+      <h>280</h>
     </coordinates>
     <panel_attributes>UzytkownikMenedzer
 -
@@ -61,6 +68,7 @@
 + wypiszWszystkichUzytkownikow () : void
 + wczytajUzytkownikowZPliku () : void
 + pobierzIdZalogowanegoUzytkownika () : Integer
++ czyUzytkownikJestZalogowany () : Bool
 - podajDaneNowegoUzytkownika () : Uzytkownik
 - pobierzIdNowegoUzytkownika () : Integer
 - czyIstniejeLogin() : Bool</panel_attributes>
@@ -69,30 +77,28 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1130</x>
-      <y>340</y>
-      <w>350</w>
-      <h>300</h>
+      <x>1040</x>
+      <y>670</y>
+      <w>540</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>PlikZUzytkownikami
 -
-- nazwaPlikuZUzytkownikami : String
+- zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami () : String
 -
-+ plikZUzytkownikami ()
++ PlikZUzytkownikami ()
 + dopiszUzytkownikaDoPliku () : void
 + wczytajUzytkownikowZPliku () : vector&lt;Uzytkownik&gt;
 + zapiszWszystkichUzytkownikowDoPliku () : void
 + pobierzDaneUzytkownika () : Uzytkownik
-- czyPlikJestPusty () : Bool
-- zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami() : String
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1130</x>
-      <y>670</y>
+      <x>40</x>
+      <y>680</y>
       <w>320</w>
       <h>220</h>
     </coordinates>
@@ -100,39 +106,44 @@
 -
 + konwerjsaIntNaString () : String
 + pobierzLiczbe () : String
-+ konwersjaStringNaInt () : Integer</panel_attributes>
++ konwersjaStringNaInt () : Integer
++ wczytajLinie () : String
++ zamienPierwszaLitereNaDuzaAPozostaleNaMale () : String
++ pobierzZnak () : Character
++ wczytajLiczbe () : Integer</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
+      <x>280</x>
       <y>340</y>
       <w>410</w>
       <h>310</h>
     </coordinates>
     <panel_attributes>AdresaciMenedzer
 --
-- idOstatniegoAdresata : Integer
+- ID_ZALOGOWANEGO_UZYTKOWNIKA : Integer
 - adresaci : vector&lt;Adresat&gt;
 - plikZAdresatami : PlikZAdresatami
 --
 - podajeDaneNowegoAdresta() : Adresat
-- zamienPierwszaLitereNaDuzaAPozostaleNaMale() : String
+- wyswietlDaneAdresata () : void
+- wybierzOpcjeZMenuEdycja() : Character
 + AdresaciMenedzer ()
-+ dodajAdresata () : void
-+ wczytajAdresatowZalogowanegoUzytkownikaZPliku () : void
-+ wyswietlDaneAdresata () : void
++ wyswietlAdresatowOTakimSamymImieniu () : void
++ wyswietlAdresatowOTakimSamymNazwisku () : void
++ usunAdresata () : void
 + wyswietlWszystkichAdresatow () : void
-+ wyczyscAdresatow () : void</panel_attributes>
++ edytujWybranegoAdresata () : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
-      <y>670</y>
-      <w>410</w>
+      <x>60</x>
+      <y>340</y>
+      <w>190</w>
       <h>200</h>
     </coordinates>
     <panel_attributes>Adresat
@@ -143,29 +154,71 @@
 - nazwisko : String
 - numerTelefonu : String
 - email : String
-- adres : String</panel_attributes>
+- adres : String
+-
++ Adresat ()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>460</y>
+      <x>470</x>
+      <y>670</y>
       <w>540</w>
-      <h>340</h>
+      <h>230</h>
     </coordinates>
     <panel_attributes>PlikZAdresatami
 --
-- nazwaPlikuZAdresatami : String
+- idOstatniegoAdresata : Integer
 --
-- czyPlikJestPusty () : Bool
 - zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami () : String
 - pobierzIdAdresataZDanychOddzielonychPionowymiKreskami () : Integer
 - pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami () : Integer
 - pobierzDaneAdresata () : Adresat
 + PlikZAdresatami ()
-+ dopiszAdresataDoPliku () : void
-+ wczytajAdresatowZalogowanegoUzytkownikaZPliku () : Integer</panel_attributes>
++ dopiszAdresataDoPliku () : Bool
++ wczytajAdresatowZalogowanegoUzytkownikaZPliku () : Integer
++ pobierzIdOstatniegoAdresata () : Integer
++ zapiszWszystkichAdresatowDoPliku () : void</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>850</x>
+      <y>340</y>
+      <w>310</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>PlikTekstowy
+-
+- NAZWA_PLIKU : String
+-
++ PlikTekstowy ()
++ pobierzNazwePliku () : String
++ czyPlikJestPusty () : Bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1150</x>
+      <y>520</y>
+      <w>140</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>520</y>
+      <w>150</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;150.0</additional_attributes>
   </element>
 </diagram>
