@@ -1,211 +1,211 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>8</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>656</x>
-      <y>16</y>
-      <w>288</w>
-      <h>248</h>
+      <x>792</x>
+      <y>0</y>
+      <w>396</w>
+      <h>341</h>
     </coordinates>
-    <panel_attributes>KsiazkaAdresowa
+    <panel_attributes>AddressBook
 -
-- uzytkownikMenedzer : UzytkownikMenedzer
-- adresaciMenedzer : *AdresaciMenedzer
-- NAZWA_PLIKU_Z_ADRESATAMI : String
+- userManager : UserManager
+- recipientManager : *RecipientManager
+- RECIPIENT_FILE_NAME : String
 -
-+ KsiazkaAdresowa ()
-+ ~KsiazkaAdresowa ()
-+ rejestracjaUzytkownika() : void
-+ logowanieUzytkownika() : void
-+ zmianaHaslaZalogowanegoUzytkownika() : void
-+ wylogowanieUzytkownika () : void
-+ wypiszWszystkichUzytkownikow () : void
-+ czyUzytkownikJestZalogowany() : Bool
-+ wyswietlWszystkichAdresatow () : void
-+ dodajAdresata () : void
-+ wyswietlAdresatwoOTakimSamymImieniu () : void
-+ wyswietlAdresatowOTakimSamymNazwisku () : void
-+ usunAdresata () : void
-+ edytujAdresata () : void</panel_attributes>
++ AddressBook ()
++ ~AddressBook ()
++ userRegistration () : void
++ userSignIn () : void
++ changePasswordOfSignedUser () : void
++ userSignOut () : void
++ displayAllUsers () : void
++ isUserSignIn () : Bool
++ displayAllRecipients () : void
++ addRecipient () : void
++ displayAllRecipientsWithTheSameName () : void
++ displayAllRecipientsWithTheSameLastname () : void
++ removeRecipient () : void
++ editRecipient () : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>640</y>
-      <w>248</w>
-      <h>64</h>
+      <x>0</x>
+      <y>858</y>
+      <w>341</w>
+      <h>88</h>
     </coordinates>
-    <panel_attributes>Uzytkownik
+    <panel_attributes>User
 -
 - id : Integer
 - login : String
-- haslo : String</panel_attributes>
+- password : String</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>208</x>
-      <y>288</y>
-      <w>272</w>
-      <h>224</h>
+      <x>176</x>
+      <y>374</y>
+      <w>374</w>
+      <h>308</h>
     </coordinates>
-    <panel_attributes>UzytkownikMenedzer
+    <panel_attributes>UserManager
 -
-- idZalogowanegoUzytkownika : Integer
-- uzytkownicy : vector &lt;Uzytkownik&gt;
-- plikZUzytkownikami : PlikZUzytkownikami
+- signedUserId : Integer
+- users : vector &lt;User&gt;
+- userFile : UserFile
 -
-+ UzytkownikMenedzer ()
-+ rejestracjaUzytkownika () : void
-+ logowanieUzytkownika () : Integer
-+ zmianaHaslaZalogowanegoUzytkownika () : void
-+ wylogowanieUzytkownika () : void
-+ wypiszWszystkichUzytkownikow () : void
-+ wczytajUzytkownikowZPliku () : void
-+ pobierzIdZalogowanegoUzytkownika () : Integer
-+ czyUzytkownikJestZalogowany () : Bool
-- podajDaneNowegoUzytkownika () : Uzytkownik
-- pobierzIdNowegoUzytkownika () : Integer
-- czyIstniejeLogin() : Bool</panel_attributes>
++ UserManager ()
++ userRegistration () : void
++ userSignIn () : Integer
++ changePasswordOfSignedUser () : void
++ userSignOut () : void
++ displayAllUsers () : void
++ LoadUsersFromFile () : void
++ getIdOfSignedUser () : Integer
++ isUserSignIn () : Bool
+- inputNewUserData () : User
+- getNewUserId () : Integer
+- isLoginExist () : Bool</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>600</y>
-      <w>432</w>
-      <h>160</h>
+      <x>440</x>
+      <y>803</y>
+      <w>594</w>
+      <h>220</h>
     </coordinates>
-    <panel_attributes>PlikZUzytkownikami
+    <panel_attributes>UserFile
 -
-- zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami () : String
+- replaceUserDataToLineWithDataSeparatedWithVerticalLine () : String
 -
-+ PlikZUzytkownikami ()
-+ dopiszUzytkownikaDoPliku () : void
-+ wczytajUzytkownikowZPliku () : vector&lt;Uzytkownik&gt;
-+ zapiszWszystkichUzytkownikowDoPliku () : void
-+ pobierzDaneUzytkownika () : Uzytkownik
++ UserFile ()
++ saveUserToFile () : void
++ loadUsersFromFile () : vector&lt;User&gt;
++ saveAllUsersToFile () : void
++ getUserData () : User
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>664</x>
-      <y>328</y>
-      <w>256</w>
-      <h>176</h>
+      <x>803</x>
+      <y>429</y>
+      <w>352</w>
+      <h>242</h>
     </coordinates>
-    <panel_attributes>MetodyPomocnicze
+    <panel_attributes>SubsidiaryMethods
 -
-+ konwerjsaIntNaString () : String
-+ pobierzLiczbe () : String
-+ konwersjaStringNaInt () : Integer
-+ wczytajLinie () : String
-+ zamienPierwszaLitereNaDuzaAPozostaleNaMale () : String
-+ pobierzZnak () : Character
-+ wczytajLiczbe () : Integer</panel_attributes>
++ convertIntToString () : String
++ getNumber () : String
++ convertStringToInt () : Integer
++ readLine () : String
++ replaceFirstLetterToCapitalAndRestToSmall () : String
++ getCharacter () : Character
++ readNumber () : Integer</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1104</x>
-      <y>304</y>
-      <w>328</w>
-      <h>184</h>
+      <x>1408</x>
+      <y>396</y>
+      <w>451</w>
+      <h>253</h>
     </coordinates>
-    <panel_attributes>AdresaciMenedzer
+    <panel_attributes>RecipientManager
 --
-- ID_ZALOGOWANEGO_UZYTKOWNIKA : Integer
-- adresaci : vector&lt;Adresat&gt;
-- plikZAdresatami : PlikZAdresatami
+- SIGNED_USER_ID : Integer
+- recipients : vector&lt;Recipient&gt;
+- recipientFile : RecipientFile
 --
-- podajeDaneNowegoAdresta() : Adresat
-- wyswietlDaneAdresata () : void
-- wybierzOpcjeZMenuEdycja() : Character
-+ AdresaciMenedzer ()
-+ wyswietlAdresatowOTakimSamymImieniu () : void
-+ wyswietlAdresatowOTakimSamymNazwisku () : void
-+ usunAdresata () : void
-+ wyswietlWszystkichAdresatow () : void
-+ edytujWybranegoAdresata () : void</panel_attributes>
+- inputNewRecipientData () : Recipient
+- displayRecipientData () : void
+- selectOptionFromEditMenu () : Character
++ RecipientManager ()
++ displayAllRecipientsWithTheSameName () : void
++ displayAllRecipientsWithTheSameLastname () : void
++ removeRecipient () : void
++ displayAllRecipients () : void
++ editSelectedRecipient () : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1360</x>
-      <y>600</y>
-      <w>152</w>
-      <h>160</h>
+      <x>1760</x>
+      <y>803</y>
+      <w>209</w>
+      <h>220</h>
     </coordinates>
-    <panel_attributes>Adresat
+    <panel_attributes>Recipient
 --
 - id : Integer
-- idUzytkownika : Integer
-- imie : String
-- nazwisko : String
-- numerTelefonu : String
+- userId : Integer
+- name : String
+- lastname : String
+- phoneNumber : String
 - email : String
-- adres : String
+- address : String
 -
-+ Adresat ()</panel_attributes>
++ Recipient ()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>856</x>
-      <y>600</y>
-      <w>432</w>
-      <h>160</h>
+      <x>1067</x>
+      <y>803</y>
+      <w>594</w>
+      <h>220</h>
     </coordinates>
-    <panel_attributes>PlikZAdresatami
+    <panel_attributes>RecipientFile
 --
-- idOstatniegoAdresata : Integer
+- recentRecipientId : Integer
 --
-- zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami () : String
-- pobierzIdAdresataZDanychOddzielonychPionowymiKreskami () : Integer
-- pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami () : Integer
-- pobierzDaneAdresata () : Adresat
-+ PlikZAdresatami ()
-+ dopiszAdresataDoPliku () : Bool
-+ wczytajAdresatowZalogowanegoUzytkownikaZPliku () : Integer
-+ pobierzIdOstatniegoAdresata () : Integer
-+ zapiszWszystkichAdresatowDoPliku () : void</panel_attributes>
+- replaceRecipientDataToLineWithDataSeperetedWithVerticalLine () : String
+- getRecipientIdFromDataSeparatedWithVerticalLine () : Integer
+- getUserIdFromDataSeparatedWithVerticalLine () : Integer
+- getRecipientData () : Recipient
++ RecipientFile ()
++ saveRecipeintToFile () : Bool
++ loadRecipentsOfSignedUserFromFile () : vector&lt;Recipient&gt;
++ getRecentRecipientId () : Integer
++ saveAllRecipientsToFile () : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
-      <y>840</y>
-      <w>248</w>
-      <h>88</h>
+      <x>880</x>
+      <y>1133</y>
+      <w>341</w>
+      <h>121</h>
     </coordinates>
-    <panel_attributes>PlikTekstowy
+    <panel_attributes>TextFile
 -
-- NAZWA_PLIKU : String
+- FILE_NAME : String
 -
-+ PlikTekstowy ()
-+ pobierzNazwePliku () : String
-+ czyPlikJestPusty () : Bool</panel_attributes>
++ TextFile ()
++ getFileName () : String
++ isFileEmpty () : Bool</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>912</x>
-      <y>752</y>
-      <w>24</w>
-      <h>104</h>
+      <x>1144</x>
+      <y>1012</y>
+      <w>33</w>
+      <h>143</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
@@ -213,10 +213,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>768</x>
-      <y>752</y>
-      <w>24</w>
-      <h>104</h>
+      <x>946</x>
+      <y>1012</y>
+      <w>33</w>
+      <h>143</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
@@ -224,10 +224,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1280</x>
-      <y>680</y>
-      <w>96</w>
-      <h>24</h>
+      <x>1650</x>
+      <y>913</y>
+      <w>132</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
@@ -235,10 +235,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>320</x>
-      <y>672</y>
-      <w>96</w>
-      <h>24</h>
+      <x>330</x>
+      <y>902</y>
+      <w>132</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
@@ -246,10 +246,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>256</x>
-      <y>504</y>
-      <w>24</w>
-      <h>152</h>
+      <x>242</x>
+      <y>671</y>
+      <w>33</w>
+      <h>209</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
@@ -257,10 +257,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
-      <y>504</y>
-      <w>24</w>
-      <h>112</h>
+      <x>484</x>
+      <y>671</y>
+      <w>33</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
@@ -268,10 +268,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1200</x>
-      <y>480</y>
-      <w>24</w>
-      <h>136</h>
+      <x>1540</x>
+      <y>638</y>
+      <w>33</w>
+      <h>187</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
@@ -279,10 +279,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1392</x>
-      <y>480</y>
-      <w>24</w>
-      <h>136</h>
+      <x>1804</x>
+      <y>638</y>
+      <w>33</w>
+      <h>187</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
@@ -290,10 +290,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>744</x>
-      <y>496</y>
-      <w>24</w>
-      <h>120</h>
+      <x>913</x>
+      <y>660</y>
+      <w>33</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
@@ -301,10 +301,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>880</x>
-      <y>496</y>
-      <w>24</w>
-      <h>120</h>
+      <x>1100</x>
+      <y>660</y>
+      <w>33</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
@@ -312,10 +312,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>912</x>
-      <y>408</y>
-      <w>208</w>
-      <h>24</h>
+      <x>1144</x>
+      <y>539</y>
+      <w>286</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>240.0;10.0;10.0;10.0</additional_attributes>
@@ -323,10 +323,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>472</x>
-      <y>416</y>
-      <w>208</w>
-      <h>24</h>
+      <x>539</x>
+      <y>550</y>
+      <w>286</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;240.0;10.0</additional_attributes>
@@ -334,10 +334,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>776</x>
-      <y>256</y>
-      <w>24</w>
-      <h>88</h>
+      <x>957</x>
+      <y>330</y>
+      <w>33</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
@@ -345,10 +345,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>184</y>
-      <w>280</w>
-      <h>120</h>
+      <x>429</x>
+      <y>231</y>
+      <w>385</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>330.0;10.0;10.0;10.0;10.0;130.0</additional_attributes>
@@ -356,10 +356,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>936</x>
-      <y>184</y>
-      <w>272</w>
-      <h>136</h>
+      <x>1177</x>
+      <y>231</y>
+      <w>374</w>
+      <h>187</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 bg=black</panel_attributes>
