@@ -102,7 +102,7 @@
       <w>352</w>
       <h>242</h>
     </coordinates>
-    <panel_attributes>SubsidiaryMethods
+    <panel_attributes>AuxilaryMethods
 -
 + convertIntToString () : String
 + getNumber () : String
@@ -123,7 +123,7 @@
     </coordinates>
     <panel_attributes>RecipientManager
 --
-- SIGNED_USER_ID : Integer
+- LOGGED_USER_ID : Integer
 - recipients : vector&lt;Recipient&gt;
 - recipientFile : RecipientFile
 --
